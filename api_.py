@@ -7,8 +7,8 @@ from urllib.request import urlopen
 
  
 class APIGet:
-    def __init__(self,baseurl="https://services.nvd.nist.gov/rest/json/cves/1.0/" ):
-        self._base = baseurl
+    def __init__(self,socket="https://services.nvd.nist.gov/rest/json/cves/1.0/" ):
+        self._socket = socket
         self.url_init()
         
         self.data = []
@@ -42,12 +42,12 @@ class APIGet:
         return self.data
     
     def url_init(self):
-        self.url = self._base
+        self.url = self._socket
         return self
 
     def _add(self, query):
         #print(query)
-        if self.url == self._base:
+        if self.url == self._socket:
             self.url += '?' + query
         else:
             self.url += '&' + query
